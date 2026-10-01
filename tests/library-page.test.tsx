@@ -769,7 +769,11 @@ describe("M2 作品库页面", () => {
     );
 
     expect(await screen.findByText(pageTwoAsset.fileName)).toBeInTheDocument();
-    expect(listAssetPage).toHaveBeenLastCalledWith({ page: 2, pageSize: 25 });
+    expect(listAssetPage).toHaveBeenLastCalledWith({
+      page: 2,
+      pageSize: 25,
+      searchField: "title",
+    });
   });
 
   it("项目页解释项目用途并显示稳定编号", async () => {
@@ -1050,6 +1054,7 @@ describe("M2 作品库页面", () => {
     expect(await screen.findByText(nextAsset.fileName)).toBeInTheDocument();
     expect(listAssets).toHaveBeenLastCalledWith({
       limit: 25,
+      searchField: "title",
     });
     expect(container.querySelector('img[src="thumb://asset-1"]')).toBeNull();
     expect(
@@ -1089,6 +1094,7 @@ describe("M2 作品库页面", () => {
       expect(listAssets).toHaveBeenCalledWith({
         limit: 25,
         keyword: "夜景",
+        searchField: "title",
         exactMatch: false,
         mediaType: "image",
         model: "flux",
@@ -1599,9 +1605,12 @@ describe("M2 作品库页面", () => {
     const service = createService({ listAssets });
     render(<LibraryPage service={service} onOpenSettings={vi.fn()} />);
     await screen.findByText(asset.fileName);
-    fireEvent.change(screen.getByPlaceholderText(text.library.search), {
-      target: { value: "晨雾" },
-    });
+    fireEvent.change(
+      screen.getByPlaceholderText(text.library.searchPlaceholder("title")),
+      {
+        target: { value: "晨雾" },
+      },
+    );
     fireEvent.change(screen.getByLabelText(text.library.filterType), {
       target: { value: "image" },
     });
@@ -1623,6 +1632,7 @@ describe("M2 作品库页面", () => {
       expect(listAssets).toHaveBeenLastCalledWith({
         limit: 25,
         keyword: "晨雾",
+        searchField: "title",
         exactMatch: false,
         mediaType: "image",
         model: "Flux",
