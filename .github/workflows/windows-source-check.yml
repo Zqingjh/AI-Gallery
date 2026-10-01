@@ -1,0 +1,45 @@
+name: Windows 源码验证
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Windows x64 检查与桌面编译
+    runs-on: windows-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: 检出源码
+        uses: actions/checkout@v4
+
+      - name: 安装 Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: 固定 npm 版本
+        run: npm install --global npm@11.6.2
+
+      - name: 安装 Rust stable MSVC 工具链
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: stable-x86_64-pc-windows-msvc
+          components: clippy, rustfmt
+
+      - name: 按锁文件安装前端依赖
+        run: npm ci
+
+      - name: 运行格式、类型、前端与 Rust 检查
+        run: npm run check
+
+      - name: 编译桌面应用但不生成安装包
+        run: npm run desktop:build:check

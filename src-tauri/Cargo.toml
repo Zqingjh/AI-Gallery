@@ -1,0 +1,22 @@
+[package]
+name = "ai-gallery"
+version = "0.1.0"
+description = "本地优先的 AI 图片与视频作品库"
+authors = ["AI Gallery contributors"]
+edition = "2024"
+rust-version = "1.85"
+
+[build-dependencies]
+tauri-build = { version = "=2.6.3", features = [] }
+
+[dependencies]
+image = { version = "=0.25.8", default-features = false, features = ["png", "jpeg", "gif", "webp"] }
+getrandom = "=0.2.17"
+keyring = { version = "=3.6.3", features = ["windows-native"] }
+rusqlite = { version = "=0.40.1", default-features = false, features = ["backup", "bundled"] }
+serde = { version = "=1.0.228", features = ["derive"] }
+serde_json = "=1.0.150"
+tauri = { version = "=2.11.5", features = [] }
+tauri-plugin-dialog = "=2.7.1"
+ureq = { version = "=3.3.0", features = ["json", "platform-verifier"] }
+url = "=2.5.8"

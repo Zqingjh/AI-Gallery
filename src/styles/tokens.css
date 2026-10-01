@@ -1,0 +1,66 @@
+:root {
+  color-scheme: dark;
+  --font-display: "Iowan Old Style", "Baskerville", "Songti SC", serif;
+  --font-body:
+    "Avenir Next", "Segoe UI Variable", "Microsoft YaHei", sans-serif;
+  --font-mono: "Cascadia Mono", "SFMono-Regular", monospace;
+  --color-canvas: #11110f;
+  --color-surface: #191916;
+  --color-surface-raised: #21211d;
+  --color-surface-muted: #292820;
+  --color-text: #f1efe8;
+  --color-text-muted: #97958d;
+  --color-line: #34332d;
+  --color-accent: #dfbb63;
+  --color-accent-ink: #242015;
+  --color-success: #8da987;
+  --color-danger: #d97868;
+  --color-info: #7ca7b7;
+  --space-1: 0.375rem;
+  --space-2: 0.625rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2.25rem;
+  --space-6: 3.5rem;
+  --radius-small: 0.35rem;
+  --radius-medium: 0.75rem;
+  --radius-large: 1.25rem;
+  --radius-pill: 999px;
+  --shadow-float: 0 2rem 5rem rgb(0 0 0 / 28%);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --color-canvas: #eeeae0;
+  --color-surface: #f6f3eb;
+  --color-surface-raised: #fffdf7;
+  --color-surface-muted: #e8e2d5;
+  --color-text: #24231f;
+  --color-text-muted: #6f6d65;
+  --color-line: #cfcbc0;
+  --color-accent: #8a6825;
+  --color-accent-ink: #fffaf0;
+  --color-success: #4f7554;
+  --color-danger: #a43f34;
+  --color-info: #3f7184;
+  --shadow-float: 0 2rem 5rem rgb(75 65 45 / 14%);
+}
+
+.nsfw-realm {
+  color-scheme: dark;
+  --font-display: "Bodoni 72", "Baskerville", "Songti SC", serif;
+  --font-body: "Bahnschrift", "Avenir Next", "Microsoft YaHei", sans-serif;
+  --color-canvas: #120d10;
+  --color-surface: #211317;
+  --color-surface-raised: #321a20;
+  --color-surface-muted: #432128;
+  --color-text: #fff7ee;
+  --color-text-muted: #d4aeb0;
+  --color-line: #76343c;
+  --color-accent: #ff5364;
+  --color-accent-ink: #21080c;
+  --color-success: #62f3b1;
+  --color-danger: #ff394f;
+  --color-info: #35e8dc;
+  --shadow-float: 0 2rem 6rem rgb(255 42 73 / 24%);
+}
