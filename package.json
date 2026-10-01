@@ -18,7 +18,7 @@
     "test:watch": "vitest",
     "typecheck": "tsc -b --pretty false",
     "format": "prettier --write .",
-    "format:check": "prettier --check .github/workflows/windows-source-check.yml README.md src/app/texts.ts src/features/library/AssetCardGrid.tsx src/features/library/ExportDialog.tsx src/features/library/LibraryPage.tsx src/services/library-service.ts src/services/tauri-library-service.ts src/styles/global.css tests/library-page.test.tsx",
+    "format:check": "prettier --check --end-of-line auto --ignore-path .gitignore .",
     "rust:format": "cargo fmt --manifest-path src-tauri/Cargo.toml",
     "rust:format:check": "cargo fmt --manifest-path src-tauri/Cargo.toml -- --check",
     "rust:test": "cargo test --manifest-path src-tauri/Cargo.toml --locked",
