@@ -159,9 +159,7 @@ impl P1LibraryService {
         limit: u32,
     ) -> Result<CustomFieldValuePage, P1LibraryServiceError> {
         validate_page(cursor, limit)?;
-        if target_ids.len() > MAX_CUSTOM_FIELD_TARGET_IDS
-            || target_ids.iter().any(|id| *id <= 0)
-        {
+        if target_ids.len() > MAX_CUSTOM_FIELD_TARGET_IDS || target_ids.iter().any(|id| *id <= 0) {
             return Err(P1LibraryServiceError::InvalidInput);
         }
         P1LibraryRepository::list_custom_field_values_for_targets(
