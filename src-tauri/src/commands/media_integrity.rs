@@ -33,9 +33,10 @@ impl Drop for MediaTaskPermit<'_> {
 }
 
 impl MediaIntegrityCommandState {
+    #[allow(deprecated)]
     fn try_acquire(&self) -> Result<MediaTaskPermit<'_>, CommandErrorDto> {
         self.active_tasks
-            .try_update(Ordering::AcqRel, Ordering::Acquire, |active| {
+            .fetch_update(Ordering::AcqRel, Ordering::Acquire, |active| {
                 (active < MAX_CONCURRENT_MEDIA_TASKS).then_some(active + 1)
             })
             .map_err(|_| {
