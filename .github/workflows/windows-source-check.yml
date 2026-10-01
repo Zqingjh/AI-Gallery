@@ -38,6 +38,9 @@ jobs:
       - name: 按锁文件安装前端依赖
         run: npm ci
 
+      - name: 下载并校验 Windows FFmpeg 构建资源
+        run: npm run media:prepare
+
       - name: 运行格式、类型、前端与 Rust 检查
         run: npm run check
 
