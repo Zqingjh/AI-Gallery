@@ -30,10 +30,7 @@ import type { WorkspaceAccessMode } from "../../services/workspace-management-se
 import type { P1SavedAssetFilter } from "../../services/p1-library-service";
 import type { MediaIntegrityService } from "../../services/media-integrity-service";
 import { ServiceError } from "../../services/service-error";
-import {
-  AssetCardGrid,
-  invalidateAssetPreviewCache,
-} from "./AssetCardGrid";
+import { AssetCardGrid, invalidateAssetPreviewCache } from "./AssetCardGrid";
 const CanvasProjectDetail = lazy(() =>
   import("./CanvasProjectDetail").then((module) => ({
     default: module.CanvasProjectDetail,
@@ -275,7 +272,9 @@ export function LibraryPage({
   const [selectedProjectIds, setSelectedProjectIds] = useState<
     ReadonlySet<string>
   >(() => new Set());
-  const [pendingExport, setPendingExport] = useState<PendingExport | null>(null);
+  const [pendingExport, setPendingExport] = useState<PendingExport | null>(
+    null,
+  );
   const [exportBusy, setExportBusy] = useState(false);
   const [metadataPresets, setMetadataPresets] = useState<MetadataPresets>({
     models: [],
@@ -717,11 +716,7 @@ export function LibraryPage({
       if (!targetDirectory) return;
       const name =
         pendingExport.kind === "assets"
-          ? await service.exportAssets(
-              pendingExport.ids,
-              mode,
-              targetDirectory,
-            )
+          ? await service.exportAssets(pendingExport.ids, mode, targetDirectory)
           : await service.exportProjects(
               pendingExport.ids,
               mode,
@@ -793,9 +788,7 @@ export function LibraryPage({
     }
     setSelectedProjectIds((current) => {
       const next = new Set(current);
-      pageIds.forEach((id) =>
-        allSelected ? next.delete(id) : next.add(id),
-      );
+      pageIds.forEach((id) => (allSelected ? next.delete(id) : next.add(id)));
       return next;
     });
   }
@@ -1016,9 +1009,7 @@ export function LibraryPage({
                   : text.library.duplicateGroups}
               </button>
             ) : null}
-            {!isReadOnly &&
-            tab === "projects" &&
-            selectedProject === null ? (
+            {!isReadOnly && tab === "projects" && selectedProject === null ? (
               <button
                 className="secondary-button"
                 type="button"

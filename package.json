@@ -18,7 +18,7 @@
     "test:watch": "vitest",
     "typecheck": "tsc -b --pretty false",
     "format": "prettier --write .",
-    "format:check": "prettier --check .",
+    "format:check": "prettier --check --ignore-path .gitignore .",
     "rust:format": "cargo fmt --manifest-path src-tauri/Cargo.toml",
     "rust:format:check": "cargo fmt --manifest-path src-tauri/Cargo.toml -- --check",
     "rust:test": "cargo test --manifest-path src-tauri/Cargo.toml --locked",
