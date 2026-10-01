@@ -5607,9 +5607,8 @@ mod tests {
         prompt_asset.media.file_name = "prompt-result.png".to_owned();
         prompt_asset.media.stored_path = "media/images/prompt-result.png".to_owned();
         prompt_asset.prompt.prompt_zh = "描绘旋转星云".to_owned();
-        let prompt_asset_id =
-            LibraryRepository::create_asset(&mut connection, &prompt_asset, 1)
-                .expect("应能创建提示词搜索作品");
+        let prompt_asset_id = LibraryRepository::create_asset(&mut connection, &prompt_asset, 1)
+            .expect("应能创建提示词搜索作品");
 
         let mut notes_asset = asset(None);
         notes_asset.media.file_name = "notes-result.png".to_owned();

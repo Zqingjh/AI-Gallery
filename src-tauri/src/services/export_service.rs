@@ -16,8 +16,8 @@ use crate::{
         ProjectKind, StoredPathKind,
     },
     services::{
-        LibraryService, LibraryServiceError, MediaIntegrityService, WorkspaceService,
-        WorkspaceServiceError, P1LibraryService, P1LibraryServiceError,
+        LibraryService, LibraryServiceError, MediaIntegrityService, P1LibraryService,
+        P1LibraryServiceError, WorkspaceService, WorkspaceServiceError,
     },
 };
 
@@ -274,9 +274,10 @@ fn collect_contents(
 
     canvas_project_ids.sort_unstable();
     canvas_project_ids.dedup();
-    let canvas_member_asset_ids = request.asset_ids.as_ref().map(|_| {
-        asset_ids.iter().copied().collect::<HashSet<_>>()
-    });
+    let canvas_member_asset_ids = request
+        .asset_ids
+        .as_ref()
+        .map(|_| asset_ids.iter().copied().collect::<HashSet<_>>());
 
     Ok(ExportContents {
         projects,

@@ -1,5 +1,6 @@
 use rusqlite::{
-    Connection, OptionalExtension, Row, params, params_from_iter, types::{Type, Value},
+    Connection, OptionalExtension, Row, params, params_from_iter,
+    types::{Type, Value},
 };
 
 use crate::domain::{
